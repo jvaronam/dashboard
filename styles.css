@@ -1,12 +1,10 @@
 /* GRID PRINCIPAL */
 body {
     display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: 100px 1fr;
-    grid-template-areas:
-        "sidebar header"
-        "sidebar cuerpo";
-    height: 100vh;
+    grid-template-columns: 250px 1fr;/*define dos columnas principales de tamaño 250 px SIDEBAR y otra ocupa todo resto*/
+    grid-template-rows: 120px 1fr;/*define dos filas, fila superior(header) 100 px y fila inferior(cuerpo) que es resto*/
+    grid-template-areas: "sidebar header" "sidebar cuerpo"; 
+    height: 100vh;/*hace grid ocupe toda altura*/
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #f0f2f5;
@@ -28,58 +26,108 @@ body {
     margin-bottom: 30px;
 }
 
-/* Navegación principal */
+
+.nav li, .ajustes li {
+    display: flex;           /* pone icono y texto en línea */
+    align-items: center;     /* centra verticalmente */
+    padding: 12px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.nav li span, .ajustes li span {
+    font-size: 20px;         /* tamaño del icono */
+    margin-right: 10px;      /* espacio entre icono y texto */
+}
+
 .nav ul, .ajustes ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.nav li, .ajustes li {
-    padding: 12px 10px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-.nav li:hover, .ajustes li:hover {
-    background-color: #374151;
-}
-
-/* HEADER */
+/*HEADER*/
 .header {
     grid-area: header;
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* Dos filas */
+    padding: 10px 20px;
     background-color: #ffffff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+/* Primera fila */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    background-color: #f0f2f5;
+    border-radius: 20px;
+    padding: 5px 15px;
+    width: 300px;
 }
 
-/* Barra de búsqueda */
-.header .search {
-    flex: 1;
-}
-
-.header .search input {
+.search input {
+    border: none;
+    background: transparent;
+    outline: none;
     width: 100%;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
+    font-size: 14px;
+    color: #333;
+}
+
+.user-top {
+    display: flex;
+    align-items: center;
+}
+
+.user-top .user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Segunda fila */
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.user-bottom .user-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.greeting .hi {
     font-size: 0.9rem;
+    color: #555;
 }
 
-/* Botones y usuario */
-.header .user {
-    margin-left: 20px;
+.greeting .name {
+    font-size: 1.2rem;
     font-weight: bold;
+    color: #333;
 }
 
-.header button {
-    margin-left: 10px;
+.buttons .btn {
     padding: 6px 12px;
     border: none;
     border-radius: 6px;
@@ -87,39 +135,141 @@ body {
     color: white;
     cursor: pointer;
     font-size: 0.9rem;
+    transition: background-color 0.3s;
 }
 
-.header button:hover {
-    background-color: #2563eb;
-}
 
 /* CUERPO */
 .cuerpo {
     grid-area: cuerpo;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: 2fr 1fr; /* proyectos + side-right */
+    gap: 20px;
     padding: 20px;
 }
 
-/* Projects */
+/* Proyectos */
 .proyectos {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Announcements y Trending */
-.anuncios, .trending {
+.projects-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 150px);
+    gap: 20px;
+}
+
+.project-card {
     background-color: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* título arriba, descripción en medio, iconos abajo */
 }
 
-/* Ajustes sidebar en la parte inferior */
-.ajustes {
-    margin-top: auto;
+.project-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.project-card p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Aquí podrías agregar una fila de íconos al final de cada project-card */
+.project-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+/* Side-right */
+.side-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Announcements */
+.anuncios > h3 {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+.anuncios > p {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+}
+
+/* Cada anuncio en tarjeta */
+.anuncios {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.anuncios div {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.anuncios div p {
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: #555;
+    margin: 5px 0 0 0;
+    line-height: 1.3;
+}
+
+/* Trending */
+.trending {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trending-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.trending-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.trending-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.trending-item .username {
+    font-weight: bold;
+}
+
+.trending-item .project-name {
+    font-size: 0.9rem;
+    color: #555;
 }
