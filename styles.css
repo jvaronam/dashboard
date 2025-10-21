@@ -1,0 +1,125 @@
+/* GRID PRINCIPAL */
+body {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar cuerpo";
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* SIDEBAR */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #1f2937;
+    color: white;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 20px 10px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Navegación principal */
+.nav ul, .ajustes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li, .ajustes li {
+    padding: 12px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.nav li:hover, .ajustes li:hover {
+    background-color: #374151;
+}
+
+/* HEADER */
+.header {
+    grid-area: header;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+/* Barra de búsqueda */
+.header .search {
+    flex: 1;
+}
+
+.header .search input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 0.9rem;
+}
+
+/* Botones y usuario */
+.header .user {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.header button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #3b82f6;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.header button:hover {
+    background-color: #2563eb;
+}
+
+/* CUERPO */
+.cuerpo {
+    grid-area: cuerpo;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+/* Projects */
+.proyectos {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Announcements y Trending */
+.anuncios, .trending {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Ajustes sidebar en la parte inferior */
+.ajustes {
+    margin-top: auto;
+}
